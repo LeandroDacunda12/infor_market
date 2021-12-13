@@ -1,20 +1,26 @@
 from django.shortcuts import render 
-
+from apps.productos.models import Producto
 
 def inicio(request):
+	productos = Producto.objects.all()
+	
+
 	usuario = {
 		"nombre": "Leandro",
 		"apellido": "Dacunda"
 	}
-	productos = [
-		{"nombre" : "computadora","precio": 12},
-		{"nombre": "teclado", "precio": 120},
+	
 
-	]
-
-	contex ={
+	context = {
 		"usuario": usuario,
 		"productos": productos
 	}
 
-	return render(request, "inicio.html")
+	return render(request, "inicio.html",context)
+
+
+def login(request):
+	print("######################")
+	print(request.POST.get("username",None))
+	return render(request, "login.html")
+
