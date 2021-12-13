@@ -1,19 +1,10 @@
 from django.shortcuts import render 
 from apps.productos.models import Producto
 
-def inicio(request):
-	productos = Producto.objects.all()
-	
-
-	usuario = {
-		"nombre": "Leandro",
-		"apellido": "Dacunda"
-	}
-	
-
+def inicio(request): 
 	context = {
-		"usuario": usuario,
-		"productos": productos
+
+		"productos": Producto.objects.all()
 	}
 
 	return render(request, "inicio.html",context)
